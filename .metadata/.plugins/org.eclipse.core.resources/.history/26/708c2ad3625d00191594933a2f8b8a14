@@ -1,0 +1,24 @@
+
+public class TreeTester 
+{
+	public static void main(String[] args)
+	{
+		
+		Tree test = new Tree("A", 2);
+		
+		Tree [] testSub = test.getChildren();
+		
+		testSub[0] =  new Tree ("B", 2);	
+		testSub[1] =  new Tree ("C", 5);
+		
+		Tree [] childSub = testSub[0].getChildren();
+		childSub[0]= new Tree ("D", 2);
+		
+		System.out.println("Is the root a leaf? " + test.isLeaf());
+		System.out.println("Is the child of the root a leaf? " +testSub[0].isLeaf());
+		System.out.println("Is the child of the previous child a leaf? " +childSub[0].isLeaf());
+		System.out.println(test.maxHeight());
+		
+		
+	}
+}

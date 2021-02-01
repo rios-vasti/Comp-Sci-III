@@ -1,0 +1,90 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.Collection;
+
+
+public class Papa
+{
+	
+	public static void main(String[] args)
+	{
+			try
+			{
+				Scanner fin = new Scanner(new File("papa.dat"));
+				int[][] matrix = new int[10][20];
+				for (int i=0; i<10; i++)
+				{
+					for (int x=0; x<20; x++)
+					{
+						matrix[i][x]= fin.nextInt();
+					}
+					//fin.nextLine();
+				}
+				
+			/*	for (int z = 0; z < 10; z++)
+				{
+					for (int a = 0; a < 20; a++)
+						{
+							System.out.print(matrix[z][a]); 
+						 
+						}
+					System.out.println();
+				}
+				System.out.println();
+				*/
+				int n = fin.nextInt();
+				fin.nextLine();
+				
+				for (int count = 0; count < n; count++)
+				{
+					int findSum = fin.nextInt();
+					System.out.println(findSum);
+					int row = 0;
+					int col = 0;
+					
+					for (int z = 0; z < 8 ; z++)
+					{
+						for (int a = 0; a < 18; a++)
+						{
+							int sum = 0;
+							for (int i=z; i<z+2; i++)
+							{
+								for (int x=a; x<a+2;x++)
+								{	
+									sum = sum + matrix[i][x];
+								}
+							}
+							if (sum == findSum)
+							{
+								row = z;
+								col = a; 
+							}
+						 
+						}
+						
+					}
+					
+					System.out.println("(" + row +", " + col +")");
+				}
+				
+				fin.close();
+			  }
+				
+			
+			
+		catch (FileNotFoundException e)
+			{
+				e.printStackTrace();
+			}
+		}
+	
+	
+}
+
+//public int sumOfThree(int matrix [][])
+//{
+
+	
+//}

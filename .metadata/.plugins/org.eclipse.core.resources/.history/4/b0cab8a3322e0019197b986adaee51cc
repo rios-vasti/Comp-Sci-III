@@ -1,0 +1,57 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.Arrays;
+
+
+public class Papa
+{
+	
+	public static void main(String[] args)
+	{
+			try
+			{
+				Scanner fin = new Scanner(new File("papa.dat"));
+				int[][] matrix = new int[9][19];
+				for (int i=0; i<9; i++)
+				{
+					for (int x=0; x<20; x++)
+					{
+						matrix[i][x]= fin.nextInt();
+					}
+				}
+				
+				for (int z = 0; z < 9; z++)
+				{
+					for (int a = 0; a < 19; a++)
+						{
+							System.out.print(matrix[z][a]); 
+						 
+						}
+					System.out.println();
+				}
+				System.out.println();
+				int n = fin.nextInt();
+				fin.nextLine();
+				
+				for (int count = 0; count < n; count++)
+				{
+					
+					System.out.println("hello");
+						
+				}
+				
+				fin.close();
+			  }
+				
+			
+			
+		catch (FileNotFoundException e)
+			{
+				e.printStackTrace();
+			}
+		}
+	
+	
+}
+

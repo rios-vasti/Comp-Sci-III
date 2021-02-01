@@ -1,0 +1,252 @@
+
+public class Member
+{
+	private int myGrade;
+	private int numberOfSemesters;
+	private String myFirstName;
+	private String myLastName;
+	private double myCulture;
+	private double myCommunityService;
+	private double myFundraiser;
+	private double myMiscellaneous;
+	private double myDeduct;
+	private String myEmail;
+	private int probation; 
+	
+	public Member (int grade, int numSem, String first, String last,double c , double cs, double f, double misc, double d, String email, int p)
+	{
+		myGrade = grade;
+		numberOfSemesters = numSem;
+		myFirstName= first;
+		myLastName= last;
+		myEmail= email;
+		myCommunityService= cs;
+		myCulture= c;
+		myFundraiser= f;
+		myMiscellaneous= misc;
+		probation = p;
+
+		
+	}
+	
+	
+	public String getFirstName()
+	{
+		return myFirstName;
+	}
+	
+	public String getLastName()
+	{
+		return myLastName;
+	}
+	
+	public String getName()
+	{
+		return myFirstName +" "+ myLastName;
+	}
+	public String getEmail ()
+	{
+		return myEmail;
+	}
+	
+	public Double setCommuityService ()
+	{
+		return myCommunityService;
+	}
+	
+	public Double getCulture ()
+	{
+		return myCulture;
+	}
+		
+	public Double getMiscellaneous ()
+	{
+		return myMiscellaneous;
+	}
+	
+	public Double getFundraiser ()
+	{
+		return myFundraiser;
+	}
+	
+	public double getDeduct ()
+	{
+		return myDeduct;
+	}
+	
+	public int getSemester ()
+	{
+		return numberOfSemesters;
+	}
+	public int getGrade ()
+	{
+		return myGrade;
+	}
+	public boolean getProbaion()
+	{
+		if (probation==1)
+		{
+			return true;
+		}
+			
+		else 
+		{
+			return false;
+		}
+	}
+	
+	public boolean getRevoked()
+	{
+		if (probation==1 || probation ==0)
+		{
+			return false;
+		}
+			
+		else 
+		{
+			return true;
+		}
+	}
+	
+	
+	//--------------------------------------------------------------------------------------------------
+	public void setFirstName(String first)
+	{
+		myFirstName= first;
+	}
+	
+	public void setLatName(String last)
+	{
+		myLastName= last;
+	}
+	
+	public void setEmail (String email)
+	{
+		myEmail= email;
+	}
+	
+	public void setCommuityService (Double cs)
+	{
+		myCommunityService= cs;
+	}
+	
+	public void setCulture (Double c)
+	{
+		myCulture= c;
+	}
+		
+	public void setMiscellaneous (Double misc)
+	{
+		myMiscellaneous= misc;
+	}
+	
+	public void setFundraiser (Double f)
+	{
+		myFundraiser= f;
+	}
+	
+	public void setDeduct (Double d)
+	{
+		myDeduct = d;
+	}
+
+	public void addCommuityService (Double cs)
+	{
+		myCommunityService= myCommunityService+ cs;
+	}
+	
+	public void addCulture (Double c)
+	{
+		myCulture= myCulture + c;
+	}
+		
+	public void addMiscellaneous (Double misc)
+	{
+		myMiscellaneous= myMiscellaneous + misc;
+	}
+	
+	public void addFundraiser (Double f)
+	{
+		myFundraiser= myFundraiser + f;
+	}
+	
+	public void addDeduct (Double d)
+	{
+		myDeduct = myDeduct + d;
+	}
+
+	public void increaseSemester ()
+	{
+		numberOfSemesters++;
+		this.probation();
+	}
+	public void increaseGrade ()
+	{
+		myGrade++;
+	}
+	
+	public void probation()
+	{
+		double tempMisc = myMiscellaneous;
+		double requiredc=  numberOfSemesters * 2; //myCommunityService; 
+		double requiredcs= numberOfSemesters * 2; //myCulture;
+		double requiredf= numberOfSemesters;
+		double requiredm= numberOfSemesters;
+		
+		double testcs = 0;
+		double testc = 0;
+		double testf = 0;
+		double testm = 0;
+		
+		if (myCommunityService >= requiredcs)
+		{
+			tempMisc = tempMisc +(myCommunityService-requiredcs);
+			testcs=1; 
+		}
+		if (myCulture >= requiredc )
+		{
+			tempMisc = tempMisc +(myCulture-requiredc);
+			testc = 1;
+		}
+		if (myFundraiser >= requiredf)
+		{
+			tempMisc = tempMisc +(myFundraiser-requiredf);
+			testf = 1;
+		}
+		if ((tempMisc - this.getDeduct()) >= requiredm )
+		{
+			testm = 1;
+		}
+		
+		if ((testcs + testc + testf + testm) < 4.0 )
+		{
+			probation ++;
+		}
+		else 
+		{
+			probation  = 0;
+		}
+	}
+	
+	public String toString2()
+	{
+		return "\nFirst Name:" +  myFirstName + "\nLast Name: "+myLastName + "\nGrade:" 
+	+ myGrade +"\nNumber of Semesters:" + numberOfSemesters + "\nCulture Points:" + 
+	myCulture + "\nComunity Service Points:" + myCommunityService +"\nFundraiser Points:" 
+	+ myFundraiser + "\nMiscellaneous points:"	+ myMiscellaneous + "\n Deducted Points:" 
+	+ myDeduct + "\nEmail:" + myEmail + "\n Probation:" + this.getProbaion() 
+	+ "\n Revoked:" + this.getRevoked() + "\n ";
+	}
+
+	
+	public String toString()
+	{
+		return myFirstName + "\t"+myLastName + "\t:" 
+	+ myGrade +"\nNumber of Semesters:" + numberOfSemesters + "\nCulture Points:" + 
+	myCulture + "\nComunity Service Points:" + myCommunityService +"\nFundraiser Points:" 
+	+ myFundraiser + "\nMiscellaneous points:"	+ myMiscellaneous + "\n Deducted Points:" 
+	+ myDeduct + "\nEmail:" + myEmail + "\n Probation:" + this.getProbaion() 
+	+ "\n Revoked:" + this.getRevoked() + "\n ";
+	}
+
+}

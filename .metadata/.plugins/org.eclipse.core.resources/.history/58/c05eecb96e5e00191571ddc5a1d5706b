@@ -1,0 +1,296 @@
+import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue; 
+import java.lang.Integer;
+import java.lang.String;
+import java.lang.Float;
+/**
+	 * A linked structure, recursive structure that contains a root with 0 or more sub trees 
+	 */
+
+public class Tree 
+
+{
+	//FIELDS
+	// ------------------------------------------------------------------
+
+	private Object myRootValue;
+	private Tree[] myChildren;
+	
+	// CONSTRUCTORS
+	// ------------------------------------------------------------------
+	
+	/**
+	 *  Initiallizes a Tree[] whose data is the created root whose value is null
+	 * @param rootValue is the parent/root of all the items stored in the tree
+	 * @param branchingFactor is the number of children each root can have
+	 */
+	public Tree(Object rootValue, int branchingFactor)
+	{
+		myRootValue = rootValue;
+		myChildren = new Tree[branchingFactor];
+		
+	}
+	
+	// METHODS
+	// ------------------------------------------------------------------
+	
+	/**
+	 * This method gets the value of the root of the tree and returns it
+	 * @return myRootValue
+	 */
+	public Object getValue()
+	{
+		return myRootValue;
+	}
+	
+	/**
+	 * This method gets the children that follow the root of the tree
+	 * @return returns an array of all of the children that follow the root of the tree
+	 */
+	
+	public Tree[] getChildren()
+	{
+		return myChildren; 
+	}
+	
+	/**
+	 * This method tests to see if a root has any children if it does not 
+	 * @return true if the rot has no children 
+	 */
+	
+	public boolean isLeaf()
+	{
+		for( Tree child  : myChildren  )
+		{
+			if ( child != null)
+			{
+				return false;
+			}
+			
+		}
+		
+		return true;
+	}
+	
+	/**
+	 * This method finds the maximum 
+	 * @return finds the number of object on each of the branches and returns the 
+	 * number of objects in the largest branch
+	 */
+	
+	public int maxHeight()
+	{
+		if (this.isLeaf())
+		{
+			return 1; 
+		}
+		
+		int max = 0; 
+		for (int i= 0; i< myChildren.length; i++)
+		{
+			if (myChildren[i] != null)
+			{
+				int temp = myChildren[i].maxHeight();
+				if (temp> max)
+				{
+					max = temp;
+				}
+			}
+			
+			
+		}
+		return max + 1;
+		
+	}
+	
+	/**
+	 * Finds the number of objects stored in a tree and returns this value
+	 * @return Finds the number of objects stored in a tree and returns this value
+	 */
+	
+	public int size()
+	{
+		int size = 0; 
+		for (int i= 0; i< myChildren.length; i++)
+		{
+			if (myChildren[i] != null)
+			{	
+				if (myChildren[i].isLeaf()==true)
+				{
+					size = size +1;
+				}
+				else 
+				{
+					int temp =myChildren[i].size();
+					size= temp+size;
+				}
+			}
+		}
+		
+		return size;
+		
+	}
+		
+	
+	
+	/**
+	 * Conducts a breath first search on this tree to determine if x is contained within this tree
+	 * @param x the item to be searched for.
+	 * @return <code> true </code> if x is contained within this tree, <code> false </code> otherwise.
+	 */
+	public boolean breathFirstSearch(Object x)
+	{
+		Queue<Tree> q = new LinkedList<Tree>(); 
+		q.add(this);
+		while (q.size() != 0)
+		{
+			
+				if (q.peek().myRootValue.equals(x))
+				{
+					return true;
+				}
+				else 
+				{
+					
+					for (int i = 0; i < q.peek().getChildren().length; i++)
+					{
+						if (q.peek().getChildren()[i] != null)
+							q.add(q.peek().getChildren()[i]);
+					}
+					q.remove();
+				}
+			
+		}
+		return false;
+	
+	}
+	
+	/**
+	 * Conducts a depth first search on this tree to determine if x is contained within this tree
+	 * @param x the item to be searched for.
+	 * @return <code> true </code> if x is contained within this tree, <code> false </code> otherwise.
+	 */
+	public boolean depthFirstSearch(Object x)
+	{
+		Stack<Tree> s = new Stack<Tree>(); 
+		s.add(this);
+		while (s.size() != 0)
+		{
+			
+			if (s.peek().myRootValue.equals(x))
+			{
+				return true;
+			}
+			else 
+			{
+				
+					Tree temp = s.pop();
+					Tree[] children = temp.getChildren();
+				
+					//if (children != null )
+					//{
+						for (int i = 0; i < children.length; i++)
+						{
+							if( children[i] != null)	
+							{	
+								s.push(children[i]);
+							}
+							
+					
+						}
+					//}
+			}
+		}
+		return false;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString()
+	{
+	     
+		String treeString = "[";
+		Queue<Tree> q = new LinkedList<Tree>(); 
+		q.add(this);
+		
+		while (q.size() != 0)
+		{	
+			Tree[] children = q.peek().getChildren();
+			if (children != null)
+			{
+			
+				for (int i = 0; i < children .length; i++)
+				{
+					if (children[i] != null)
+					{q.add(children[i]);
+					//q.add(q.peek().getChildren()[i]);
+					}
+				}
+				Object value = q.peek().getValue();
+				  if (value.getClass() == Integer.class) 
+				  	{
+					  treeString= treeString + (String)value;
+			            
+			        }
+				 /* else if(value.getClass() == String.class)
+				  	{
+			        	treeString= treeString + ((Integer)value).toString();
+			        }else if(value.getClass() == Float.class)
+			        {
+			        	treeString= treeString + ((Float)value).toString();
+			        }
+				  */
+				treeString = treeString + q.peek().getValue().toString()+" ";
+				q.remove();
+			}	
+		}
+		return treeString +"]";
+	}
+	
+	/*
+	 * Compares object x to the to the Tree to see if the Tree has all the same items stored
+	 * in the same positions and same places, if they do the method returns true
+	 * 
+	 * @param x the item that is to be compared to the Tree
+	 * @returns  <code> true </code> if x is equal to the Tree, <code> false </code> otherwise.
+	 */
+	
+	public boolean equals(Object x)
+	{
+		if (x==this) 
+		{
+			return true;
+		}
+		if (!(x instanceof Tree))
+		{
+			return false;
+		}
+		@SuppressWarnings("unchecked")
+		Tree c = (Tree)x;
+
+		if (c.size()!=this.size())
+		{
+			return false;
+		}
+
+		if (c.toString()==this.toString())
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * @return the specific hash code for this Tree
+	 */
+	public int hashCode()
+	{
+		return this.toString().hashCode();
+	}
+}
+
+
+

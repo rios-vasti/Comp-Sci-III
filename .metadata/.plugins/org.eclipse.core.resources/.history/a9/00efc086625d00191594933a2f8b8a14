@@ -1,0 +1,10 @@
+
+public class BinarySearchTree <E extends Comparable <E>> extends BinaryTree
+{
+	
+	public BinarySearchTree(Comparable <E> rootValue)
+	{
+		super(rootValue);
+	}
+
+}

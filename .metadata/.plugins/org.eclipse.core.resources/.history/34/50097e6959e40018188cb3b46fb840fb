@@ -1,0 +1,41 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.regex.Pattern;
+public class White3A 
+{
+	
+	public static void main(String[] args)
+	{
+			try
+			{
+				Scanner fin = new Scanner(new File("white3b.dat"));
+				int n = fin.nextInt();
+				fin.nextLine();
+				
+				for (int i = 0; i < n; i++)
+				{
+					String currentLine = fin.nextLine();
+					String replaceString =currentLine.replaceAll("a","A");
+					System.out.println(replaceString);  
+					
+						
+				}
+				
+				fin.close();
+			  }
+				
+			
+			
+		catch (FileNotFoundException e)
+			{
+				e.printStackTrace();
+			}
+		}
+	
+	public String replaceAll(String regex, String replacement)
+	{  
+		return Pattern.compile(regex).matcher(this).replaceAll(replacement);  
+	}  
+	
+}

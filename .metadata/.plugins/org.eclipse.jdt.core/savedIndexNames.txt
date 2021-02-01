@@ -1,0 +1,9 @@
+INDEX VERSION 1.131+G:\My Drive\Computer-Science III\.metadata\.plugins\org.eclipse.jdt.core
+109440712.index
+1222258226.index
+1504829084.index
+789344348.index
+1079532042.index
+2966187909.index
+315145231.index
+2840670779.index

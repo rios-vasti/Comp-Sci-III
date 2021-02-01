@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;CodeChallenges/white1b (1).dat&apos; to &apos;white1b.dat&apos;" description="Rename resource &apos;white1b (1).dat&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="white1b (1).dat" name="white1b.dat" stamp="1537554330964" updateReferences="true"/>
+</session>

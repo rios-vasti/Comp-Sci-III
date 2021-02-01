@@ -1,0 +1,65 @@
+import java.util.List;
+
+public class BinaryTree {
+	
+	// CONSTRUCTORS
+	// ------------------------------------------------------------------
+	
+	/**
+	 * Constructs a Binary tree, which is a tree which has a branching factor of two
+	 * @param rootValue is the parent/root of all the items stored in the tree
+	 */
+	public BinaryTree(Object rootValue)
+	{
+		
+	
+	}
+
+	/*
+	 * 
+	 */
+	public BinaryTree(Object rootValue,BinaryTree left, BinaryTree right)
+	{
+		
+	
+	}
+	
+	public void setLeft (BinaryTree left)
+	{
+		
+	}
+	
+	public void setRight (BinaryTree right)
+	{
+		
+	}
+	
+	public BinaryTree getLeft ()
+	{
+		return null;
+	}
+	
+	public List<Object> inOrder()
+	{
+		return null;
+	}
+	
+	public List<Object> preOrder()
+	{
+		return null;
+	}
+	
+	public List<Object> postOrder()
+	{
+		return null;
+	}
+	
+	public List<Object> levelByLevel()
+	{
+		return null;
+	}
+	
+	
+	
+
+}

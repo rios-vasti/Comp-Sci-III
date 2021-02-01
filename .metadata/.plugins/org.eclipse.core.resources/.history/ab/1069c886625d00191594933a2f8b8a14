@@ -1,0 +1,14 @@
+
+public class ExpressionTree extends BinaryTree
+{
+ 
+	public ExpressionTree (Object rootValue)
+	{
+		super(rootValue);
+	}
+	
+	public Object getValue()
+	{
+		return null;
+	}
+}

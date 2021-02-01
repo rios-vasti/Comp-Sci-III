@@ -1,0 +1,25 @@
+//Symbol Name		Page Address
+//----------------	------------
+//	APPEND                  D019
+//	BACKSP                  D022
+//	CARET                   D024
+//	CLEAR                   D01D
+//	ECHO                    D015
+//	ERRMSG                  D026
+//	ERROR                   D01F
+//	ESCAPE                  D021
+//	GETCHAR                 D00E
+//	INIT                    D000
+//	ISBKSP                  D012
+//	ISEOL                   D016
+//	ISESC                   D00F
+//	NEWLINE                 D023
+//	NULL                    D025
+//	POINTER                 D02F
+//	POMPT                   D00C
+//	POPCHAR                 D01E
+//	PRINT                   D01C
+//	QUIT                    D020
+//	STRING                  D031
+//	TOOFAR                  D03B
+//	TOSOON                  D030
